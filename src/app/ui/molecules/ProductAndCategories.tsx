@@ -15,6 +15,7 @@ export const ProductAndCategories = ({
 			<h1>{title}</h1>
 			<p>{category}</p>
 			<p>{formatMoney(price)}</p>
+			<p>{description}</p>
 		</article>
 	);
 };
