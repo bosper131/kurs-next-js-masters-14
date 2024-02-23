@@ -1,3 +1,5 @@
+import type { Route } from "next";
+import { ActiveLink } from "@/app/ui/atoms/ActiveLink";
 import { ProductAndCategories } from "@/app/ui/molecules/ProductAndCategories";
 import type { ProductsType } from "@/app/ui/organisms/ProductList.type";
 
@@ -12,8 +14,10 @@ export const ProductList = ({
 			data-testid="products-list"
 		>
 			{products.map((product) => (
-				<li key={product.id} >
-					<ProductAndCategories {...product} />
+				<li key={product.id}>
+					<ActiveLink href={`/product/${product.id}` as Route}>
+						<ProductAndCategories {...product} />
+					</ActiveLink>
 				</li>
 			))}
 		</ul>
