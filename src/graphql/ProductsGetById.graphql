@@ -1,0 +1,14 @@
+query ProductGetById($slug: ID!) {
+	product(id: $slug) {
+		id
+		name
+		description
+		categories {
+			name
+		}
+		images {
+			url
+		}
+		price
+	}
+}

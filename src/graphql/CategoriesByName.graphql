@@ -1,0 +1,19 @@
+query CategoriesByName {
+	categories {
+		data {
+			name
+			products {
+				id
+				name
+				description
+				categories {
+					name
+				}
+				images {
+					url
+				}
+				price
+			}
+		}
+	}
+}

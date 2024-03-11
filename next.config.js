@@ -12,7 +12,20 @@ const nextConfig = {
 				destination: "/products/1",
 				permanent: false,
 			},
+			{
+				source: "/categories",
+				destination: "/categories/Hoodies/1",
+				permanent: false,
+			},
 		];
+	},
+	images: {
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "static-ourstore.hyperfunctor.com",
+			},
+		],
 	},
 };
 

@@ -3,8 +3,10 @@ import { ActiveLink } from "@/app/ui/atoms/ActiveLink";
 
 export default function Pagination({
 	totalPages,
+	url
 }: {
 	totalPages: number;
+	url:string
 }) {
 	return (
 		<nav
@@ -12,7 +14,7 @@ export default function Pagination({
 			aria-label="pagination"
 		>
 			{Array.from({ length: totalPages }).map((_, i) => (
-				<ActiveLink key={i} href={`/products/${i + 1}` as Route}>
+				<ActiveLink key={i} href={`/${url}${i + 1}` as Route}>
 					{i + 1}
 				</ActiveLink>
 			))}

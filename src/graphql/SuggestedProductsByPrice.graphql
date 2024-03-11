@@ -1,0 +1,16 @@
+query SuggestedProductsByPrice($take: Int!) {
+	products(take: $take) {
+		data {
+			id
+			name
+			description
+			categories {
+				name
+			}
+			images {
+				url
+			}
+			price
+		}
+	}
+}

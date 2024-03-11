@@ -4,16 +4,18 @@ import { formatMoney } from "@/app/utils/formatMoney";
 
 export const ProductAndCategories = ({
 	description,
-	image,
-	title,
+	images,
+	name,
 	price,
-	category,
+	categories,
 }: ProductsType) => {
 	return (
 		<article>
-			<ProductCoverImage src={image} alt={description} />
-			<h1>{title}</h1>
-			<p>{category}</p>
+			{images[0] && (
+				<ProductCoverImage src={images[0].url} alt={description} />
+			)}
+			<h1>{name}</h1>
+			{categories[0] && <p>{categories[0].name}</p>}
 			<p>{formatMoney(price)}</p>
 			<p>{description}</p>
 		</article>

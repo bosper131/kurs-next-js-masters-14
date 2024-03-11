@@ -1,13 +1,5 @@
-export type ProductsType = {
-	id: string;
-	title: string;
-	price: number;
-	description: string;
-	category: string;
-	rating?: {
-		rate: number;
-		count: number;
-	};
-	image: string;
-	longDescription?: string;
-};
+import type { ProductGetByIdQuery } from "@/gql/graphql";
+
+export type ProductsType = NonNullable<
+	ProductGetByIdQuery["product"]
+>;

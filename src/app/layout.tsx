@@ -2,6 +2,7 @@ import type { Metadata, Route } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ActiveLink } from "@/app/ui/atoms/ActiveLink";
+import { SearchInput } from "@/app/ui/molecules/SearchInput";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,6 +28,14 @@ export default function RootLayout({
 							<ActiveLink href={"/products" as Route} exact>
 								All
 							</ActiveLink>
+						</li>
+						<li>
+							<ActiveLink href={"/categories" as Route} exact>
+								Categories
+							</ActiveLink>
+						</li>
+						<li>
+							<SearchInput />
 						</li>
 					</ul>
 				</nav>

@@ -1,10 +1,19 @@
 import type { Metadata } from "next";
-import { getProductById } from "@/data/products";
+import { executeGraphql } from "@/data/products";
 import { ProductAndCategories } from "@/app/ui/molecules/ProductAndCategories";
+import {
+	ProductGetByIdDocument,
+	type ProductGetByIdQuery,
+} from "@/gql/graphql";
 
 export async function generateStaticParams() {
-	const res = await fetch(`https://naszsklep-api.vercel.app/api/products`);
-	const products = (await res.json()) as { id: string; title: string }[];
+	const res = await fetch(
+		`https://naszsklep-api.vercel.app/api/products`,
+	);
+	const products = (await res.json()) as {
+		id: string;
+		title: string;
+	}[];
 
 	return products.map((product) => ({ productId: product.id }));
 }
@@ -14,11 +23,16 @@ export async function generateMetadata({
 }: {
 	params: { productId: string };
 }): Promise<Metadata> {
-	const product = await getProductById(params.productId);
+	const data: ProductGetByIdQuery = await executeGraphql(
+		ProductGetByIdDocument,
+		{
+			slug: params.productId,
+		},
+	);
 
 	return {
-		title: product.title,
-		description: product.description,
+		title: data.product?.name,
+		description: data.product?.description,
 	};
 }
 
@@ -27,6 +41,15 @@ export default async function ProductPage({
 }: {
 	params: { productId: string };
 }) {
-	const product = await getProductById(params.productId);
-	return <ProductAndCategories {...product} />;
+	const data: ProductGetByIdQuery = await executeGraphql(
+		ProductGetByIdDocument,
+		{
+			slug: params.productId,
+		},
+	);
+
+	const productAndCategories = data.product && (
+		<ProductAndCategories {...data.product} />
+	);
+	return productAndCategories;
 }
