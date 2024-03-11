@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import type { ProductsType } from "@/app/ui/organisms/ProductList.type";
 import { type TypedDocumentString } from "@/gql/graphql";
 
