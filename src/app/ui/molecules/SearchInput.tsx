@@ -5,11 +5,14 @@ import { useState } from "react";
 export const SearchInput = () => {
 	const router = useRouter();
 	const [route, setRoute] = useState<string>();
-	const [timer, setTimer] = useState(null);
-	const inputChanged = (e: React.SyntheticEvent) => {
+	const [timer, setTimer] = useState<NodeJS.Timeout | null>(null);
+	const inputChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
 		e.preventDefault();
+		const target = e.target as HTMLInputElement;
 		setRoute(e.target.value);
-		clearTimeout(timer);
+		if (timer !== null) {
+			clearTimeout(timer);
+		}
 
 		const newTimer = setTimeout(() => {
 			router.push(`/search?query=${route}`);
