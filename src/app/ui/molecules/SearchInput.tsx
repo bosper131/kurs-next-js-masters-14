@@ -9,7 +9,7 @@ export const SearchInput = () => {
 	const inputChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
 		e.preventDefault();
 		const target = e.target as HTMLInputElement;
-		setRoute(e.target.value);
+		setRoute(target.value);
 		if (timer !== null) {
 			clearTimeout(timer);
 		}
