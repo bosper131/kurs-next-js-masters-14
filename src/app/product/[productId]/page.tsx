@@ -6,18 +6,6 @@ import {
 	type ProductGetByIdQuery,
 } from "@/gql/graphql";
 
-export async function generateStaticParams() {
-	const res = await fetch(
-		`https://naszsklep-api.vercel.app/api/products`,
-	);
-	const products = (await res.json()) as {
-		id: string;
-		title: string;
-	}[];
-
-	return products.map((product) => ({ productId: product.id }));
-}
-
 export async function generateMetadata({
 	params,
 }: {
