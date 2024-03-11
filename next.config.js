@@ -17,6 +17,11 @@ const nextConfig = {
 				destination: "/categories/Hoodies/1",
 				permanent: false,
 			},
+			{
+				source: "/collections",
+				destination: "/collections/summervibes",
+				permanent: false,
+			},
 		];
 	},
 	images: {

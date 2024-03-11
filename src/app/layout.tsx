@@ -35,6 +35,11 @@ export default function RootLayout({
 							</ActiveLink>
 						</li>
 						<li>
+							<ActiveLink href={"/collections" as Route} exact>
+								Collections
+							</ActiveLink>
+						</li>
+						<li>
 							<SearchInput />
 						</li>
 					</ul>
