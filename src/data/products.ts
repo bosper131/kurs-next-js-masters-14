@@ -1,6 +1,5 @@
 import type { ProductsType } from "@/app/ui/organisms/ProductList.type";
-import { graphql } from "@/gql";
-import { TypedDocumentString } from "@/gql/graphql";
+import { type TypedDocumentString } from "@/gql/graphql";
 
 export const getProductById = async (id: string) => {
 	const res = await fetch(
@@ -43,7 +42,7 @@ export const executeGraphql = async <TResult, TVariables>(
 		},
 	});
 
-	const graphqlResponse = (await res.json()) as GraphQLResponse<TResult>;
+	const graphqlResponse = await res.json();
 
 	if (graphqlResponse.errors) {
 		throw TypeError(`GraphQL Error`, {
@@ -53,37 +52,3 @@ export const executeGraphql = async <TResult, TVariables>(
 
 	return graphqlResponse.data;
 };
-// export const getProducts = async ({
-// 	offset,
-// 	productsPerPage,
-// }: {
-// 	offset: number;
-// 	productsPerPage: number;
-// }) => {
-// 	const res = await fetch("",{
-// 		method: "POST",
-// 		headers: {
-// 			"Content-Type": "application/json",
-// 		},
-// 		body: JSON.stringify({
-// 			query: /* GraphQL */ `
-// 				query GetProductsList {
-// 				products (first:10){
-// 					id
-// 					name
-// 					description
-// 					price
-// 					images{
-// 						url
-// 					}
-// 					description
-// 				}
-// 			}`,
-// 			headers:{
-// 				"Content-Type": "application/json"
-// 			}
-// 		}),
-// 	});
-// 	const products = (await res.json()) as ProductsType[];
-// 	return products;
-// };
