@@ -1,3 +1,4 @@
+import { type Metadata } from "next/types";
 import Pagination from "@/app/ui/molecules/Pagination";
 import { ProductList } from "@/app/ui/organisms/ProductList";
 import { type ProductsType } from "@/app/ui/organisms/ProductList.type";
@@ -8,6 +9,16 @@ import {
 } from "@/gql/graphql";
 
 const PRODUCTS_PER_PAGE = 1;
+
+export async function generateMetadata({
+	params: { categoryName = "Hoodies" },
+}: {
+	params: { categoryName: "Hoodies" };
+}): Promise<Metadata> {
+	return {
+		title: categoryName,
+	};
+}
 
 export default async function CategoriesPage({
 	params: { categoryName = "Hoodies", pageNumber = 1 },
