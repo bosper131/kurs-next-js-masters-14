@@ -10,13 +10,9 @@ import {
 
 const PRODUCTS_PER_PAGE = 1;
 
-export async function generateMetadata({
-	params: { categoryName = "Hoodies" },
-}: {
-	params: { categoryName: "Hoodies" };
-}): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
 	return {
-		title: categoryName,
+		title: "Categories",
 	};
 }
 
