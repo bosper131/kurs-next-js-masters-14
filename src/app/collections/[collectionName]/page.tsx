@@ -1,3 +1,4 @@
+import { type Metadata } from "next/types";
 import { ProductList } from "@/app/ui/organisms/ProductList";
 import { type ProductsType } from "@/app/ui/organisms/ProductList.type";
 import { executeGraphql } from "@/data/products";
@@ -5,6 +6,12 @@ import {
 	CollectionsByNameDocument,
 	type CollectionsByNameQuery,
 } from "@/gql/graphql";
+
+export async function generateMetadata(): Promise<Metadata> {
+	return {
+		title: "Collections",
+	};
+}
 
 export default async function ProductsPage({
 	params: { collectionName = "Summer Vibes" },
