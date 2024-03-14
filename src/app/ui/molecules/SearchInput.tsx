@@ -23,7 +23,7 @@ export const SearchInput = () => {
 
 	return (
 		<input
-			type="text"
+			type="search"
 			placeholder="Search"
 			name="route"
 			onChange={inputChanged}
