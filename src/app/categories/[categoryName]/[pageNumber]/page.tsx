@@ -24,6 +24,7 @@ export default async function CategoriesPage({
 
 	return (
 		<>
+			<h1>Categories</h1>
 			<ProductList
 				products={products.slice(
 					pageNumber - 1,
