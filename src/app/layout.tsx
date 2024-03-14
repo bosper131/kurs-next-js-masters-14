@@ -30,13 +30,13 @@ export default function RootLayout({
 							</ActiveLink>
 						</li>
 						<li>
-							<ActiveLink href={"/categories" as Route} exact>
-								Categories
+							<ActiveLink href={"/collections" as Route} exact>
+								Collections
 							</ActiveLink>
 						</li>
 						<li>
-							<ActiveLink href={"/collections" as Route} exact>
-								Collections
+							<ActiveLink href={"/categories" as Route} exact>
+								Categories
 							</ActiveLink>
 						</li>
 						<li>
