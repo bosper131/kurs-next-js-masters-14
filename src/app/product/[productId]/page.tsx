@@ -4,7 +4,12 @@ import { ProductAndCategories } from "@/app/ui/molecules/ProductAndCategories";
 import {
 	ProductGetByIdDocument,
 	type ProductGetByIdQuery,
+	SuggestedProductsByPriceDocument,
+	type SuggestedProductsByPriceQuery,
 } from "@/gql/graphql";
+import SuggestedProducts from "@/app/ui/organisms/SuggestedProducts";
+
+const numberOfSuggestedProducts = 4;
 
 export async function generateMetadata({
 	params,
@@ -36,8 +41,18 @@ export default async function ProductPage({
 		},
 	);
 
+	const suggestedProducts: SuggestedProductsByPriceQuery =
+		await executeGraphql(SuggestedProductsByPriceDocument, {
+			take: numberOfSuggestedProducts,
+		});
+
 	const productAndCategories = data.product && (
 		<ProductAndCategories {...data.product} />
 	);
-	return productAndCategories;
+	return (
+		<>
+			{productAndCategories}
+			<SuggestedProducts products={suggestedProducts.products.data} />
+		</>
+	);
 }
