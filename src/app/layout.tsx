@@ -21,17 +21,17 @@ export default function RootLayout({
 			<body className={inter.className}>
 				<nav className="bg-gray-100 p-4">
 					<ul className="mt-2 flex justify-center space-x-4">
+					<li>
+							<ActiveLink href={"/collections" as Route} exact>
+								Collections
+							</ActiveLink>
+						</li>
 						<li>
 							<ActiveLink href="/">Home</ActiveLink>
 						</li>
 						<li>
 							<ActiveLink href={"/products" as Route} exact>
 								All
-							</ActiveLink>
-						</li>
-						<li>
-							<ActiveLink href={"/collections" as Route} exact>
-								Collections
 							</ActiveLink>
 						</li>
 						<li>
