@@ -10,7 +10,7 @@ export const ProductAndCategories = ({
 	categories,
 	isSuggested,
 }: ProductListWithSuggested) => {
-	const title = isSuggested ? <h1>{name}</h1> : <h2>{name}</h2>;
+	const title = isSuggested ? <h2>{name}</h2> : <h1>{name}</h1>;
 	return (
 		<article>
 			{images[0] && (
