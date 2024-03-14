@@ -8,7 +8,7 @@ import type { Route } from "next";
 export const ActiveLink = ({
 	href,
 	children,
-	activeClassName = "underline",
+	activeClassName = "underline text-red-500",
 	className = "text-blue-400 hover:text-blue-600",
 	exact,
 }: {
