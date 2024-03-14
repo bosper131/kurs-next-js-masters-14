@@ -1,5 +1,5 @@
 import { ProductCoverImage } from "@/app/ui/atoms/ProductCoverImage";
-import type { ProductsType } from "@/app/ui/organisms/ProductList.type";
+import type { ProductListWithSuggested } from "@/app/ui/organisms/ProductList.type";
 import { formatMoney } from "@/app/utils/formatMoney";
 
 export const ProductAndCategories = ({
@@ -8,13 +8,15 @@ export const ProductAndCategories = ({
 	name,
 	price,
 	categories,
-}: ProductsType) => {
+	isSuggested,
+}: ProductListWithSuggested) => {
+	const title = isSuggested ? <h1>{name}</h1> : <h2>{name}</h2>;
 	return (
 		<article>
 			{images[0] && (
 				<ProductCoverImage src={images[0].url} alt={description} />
 			)}
-			<h1>{name}</h1>
+			{title}
 			{categories[0] && <p>{categories[0].name}</p>}
 			<p>{formatMoney(price)}</p>
 			<p>{description}</p>

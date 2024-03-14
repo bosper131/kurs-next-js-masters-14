@@ -5,8 +5,10 @@ import type { ProductsType } from "@/app/ui/organisms/ProductList.type";
 
 export const ProductList = ({
 	products,
+	isSuggested,
 }: {
 	products: ProductsType[];
+	isSuggested?: boolean;
 }) => {
 	return (
 		<ul
@@ -16,7 +18,10 @@ export const ProductList = ({
 			{products.map((product) => (
 				<li key={product.id}>
 					<ActiveLink href={`/product/${product.id}` as Route}>
-						<ProductAndCategories {...product} />
+						<ProductAndCategories
+							{...product}
+							isSuggested={isSuggested}
+						/>
 					</ActiveLink>
 				</li>
 			))}

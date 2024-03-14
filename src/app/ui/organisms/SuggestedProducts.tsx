@@ -8,8 +8,8 @@ export default async function SuggestedProducts({
 }) {
 	return (
 		<div data-testid="related-products">
-			<h1>Suggested Products</h1>
-			<ProductList products={products} />
+			<p>Suggested Products</p>
+			<ProductList products={products} isSuggested />
 		</div>
 	);
 }
