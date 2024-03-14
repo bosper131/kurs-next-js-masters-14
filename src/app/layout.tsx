@@ -21,8 +21,8 @@ export default function RootLayout({
 			<body className={inter.className}>
 				<nav className="bg-gray-100 p-4">
 					<ul className="mt-2 flex justify-center space-x-4">
-					<li>
-							<ActiveLink href={"/collections" as Route} exact>
+						<li>
+							<ActiveLink href={"/collections/" as Route} exact>
 								Collections
 							</ActiveLink>
 						</li>
@@ -35,7 +35,7 @@ export default function RootLayout({
 							</ActiveLink>
 						</li>
 						<li>
-							<ActiveLink href={"/categories" as Route} exact>
+							<ActiveLink href={"/categories/" as Route} exact>
 								Categories
 							</ActiveLink>
 						</li>
