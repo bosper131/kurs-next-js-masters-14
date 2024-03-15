@@ -29,7 +29,7 @@ export default async function ProductsPage({
 		)[0]?.products || [];
 	return (
 		<>
-			<h1>Collections</h1>
+			<h1>{collectionName}</h1>
 			<ProductList products={products} />
 		</>
 	);
