@@ -7,9 +7,28 @@ import {
 	type CollectionsByNameQuery,
 } from "@/gql/graphql";
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+	params: { collectionName },
+}: {
+	params: { collectionName: string };
+}): Promise<Metadata> {
+	const data: CollectionsByNameQuery = await executeGraphql(
+		CollectionsByNameDocument,
+		{},
+	);
+
+	const filteredCollection = data.collections.data.filter(
+		(collection: productsForCollection) =>
+			collection.name.toLowerCase().replace(/ /g, "") ===
+			collectionName.toLowerCase(),
+	)[0];
+
+	const productsName: string = filteredCollection
+		? filteredCollection.name
+		: "No products";
+
 	return {
-		title: "Collections",
+		title: productsName,
 	};
 }
 
