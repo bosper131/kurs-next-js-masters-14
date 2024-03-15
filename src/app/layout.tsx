@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ActiveLink } from "@/app/ui/atoms/ActiveLink";
 import { SearchInput } from "@/app/ui/molecules/SearchInput";
-import { type ProductsType } from "@/app/ui/organisms/ProductList.type";
 import { executeGraphql } from "@/data/products";
 import {
 	CollectionsByNameDocument,
