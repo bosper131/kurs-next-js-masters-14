@@ -13,6 +13,11 @@ export async function generateMetadata(): Promise<Metadata> {
 	};
 }
 
+export type productsForCollection = {
+	name: string;
+	products: ProductsType[];
+};
+
 export default async function ProductsPage({
 	params: { collectionName = "Summer Vibes" },
 }) {
@@ -21,16 +26,17 @@ export default async function ProductsPage({
 		{},
 	);
 
-	const products: ProductsType[] =
+	const productsObj: productsForCollection | never[] =
 		data.collections.data.filter(
 			(collection) =>
 				collection.name.toLowerCase().replace(/ /g, "") ===
 				collectionName.toLowerCase(),
-		)[0]?.products || [];
+		)[0] || { name: "No products", products: [] };
+
 	return (
 		<>
-			<h1>{collectionName}</h1>
-			<ProductList products={products} />
+			<h1>{productsObj.name}</h1>
+			<ProductList products={productsObj.products} />
 		</>
 	);
 }
