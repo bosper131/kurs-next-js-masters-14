@@ -8,6 +8,8 @@ import {
 	type SuggestedProductsByPriceQuery,
 } from "@/gql/graphql";
 import SuggestedProducts from "@/app/ui/organisms/SuggestedProducts";
+import { AddToCartButton } from "@/app/ui/atoms/ActiveCartButton";
+import { addItemToCartAction } from "@/actions/cart";
 
 const numberOfSuggestedProducts = 4;
 
@@ -16,12 +18,10 @@ export async function generateMetadata({
 }: {
 	params: { productId: string };
 }): Promise<Metadata> {
-	const data: ProductGetByIdQuery = await executeGraphql(
-		ProductGetByIdDocument,
-		{
-			slug: params.productId,
-		},
-	);
+	const data: ProductGetByIdQuery = await executeGraphql({
+		query: ProductGetByIdDocument,
+		variables: { slug: params.productId },
+	});
 
 	return {
 		title: data.product?.name,
@@ -34,16 +34,15 @@ export default async function ProductPage({
 }: {
 	params: { productId: string };
 }) {
-	const data: ProductGetByIdQuery = await executeGraphql(
-		ProductGetByIdDocument,
-		{
-			slug: params.productId,
-		},
-	);
+	const data: ProductGetByIdQuery = await executeGraphql({
+		query: ProductGetByIdDocument,
+		variables: { slug: params.productId },
+	});
 
 	const suggestedProducts: SuggestedProductsByPriceQuery =
-		await executeGraphql(SuggestedProductsByPriceDocument, {
-			take: numberOfSuggestedProducts,
+		await executeGraphql({
+			query: SuggestedProductsByPriceDocument,
+			variables: { take: numberOfSuggestedProducts },
 		});
 
 	const productAndCategories = data.product && (
@@ -53,6 +52,9 @@ export default async function ProductPage({
 		<>
 			{productAndCategories}
 			<SuggestedProducts products={suggestedProducts.products.data} />
+			<form action={addItemToCartAction}>
+				<AddToCartButton productId={params.productId} />
+			</form>
 		</>
 	);
 }

@@ -15,10 +15,10 @@ export default async function SearchPage({
 		redirect("/");
 	}
 	const { query = "Snapback" } = searchParams;
-	const data: SearchProductsByNameQuery = await executeGraphql(
-		SearchProductsByNameDocument,
-		{ name: query },
-	);
+	const data: SearchProductsByNameQuery = await executeGraphql({
+		query: SearchProductsByNameDocument,
+		variables: { name: query },
+	});
 
 	return (
 		<>

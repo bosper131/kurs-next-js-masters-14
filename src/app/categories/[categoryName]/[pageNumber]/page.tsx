@@ -20,8 +20,7 @@ export default async function CategoriesPage({
 	params: { categoryName = "Hoodies", pageNumber = 1 },
 }) {
 	const data: CategoriesByNameQuery = await executeGraphql(
-		CategoriesByNameDocument,
-		{},
+		{query: CategoriesByNameDocument, variables: {}},
 	);
 	const products: ProductsType[] =
 		data.categories.data.filter(

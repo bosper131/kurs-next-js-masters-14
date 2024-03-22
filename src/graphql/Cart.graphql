@@ -1,0 +1,6 @@
+fragment Cart on Cart {
+    id
+    items {
+        ...CartItem
+    }
+}

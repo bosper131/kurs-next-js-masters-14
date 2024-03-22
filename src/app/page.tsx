@@ -5,11 +5,10 @@ import {
 	type ProductsGetListQuery,
 } from "@/gql/graphql";
 
-
 export default async function HomePage() {
-	const dataProducts: ProductsGetListQuery = await executeGraphql(
-		ProductsGetListDocument,
-		{},
-	);
+	const dataProducts: ProductsGetListQuery = await executeGraphql({
+		query: ProductsGetListDocument,
+		variables: {},
+	});
 	return <ProductList products={dataProducts.products.data} />;
 }

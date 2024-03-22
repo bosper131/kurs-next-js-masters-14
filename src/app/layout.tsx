@@ -8,6 +8,7 @@ import {
 	CollectionsByNameDocument,
 	type CollectionsByNameQuery,
 } from "@/gql/graphql";
+import { NavigationCart } from "@/app/ui/molecules/NavigationCart";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,16 +22,16 @@ export default async function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	const data: CollectionsByNameQuery = await executeGraphql(
-		CollectionsByNameDocument,
-		{},
-	);
+	const data: CollectionsByNameQuery = await executeGraphql({
+		query: CollectionsByNameDocument,
+		variables: {},
+	});
 
 	return (
 		<html lang="pl">
 			<body className={inter.className}>
 				<nav className="bg-gray-100 p-4">
-					<ul className="mt-2 flex justify-center space-x-4">
+					<ul className="mt-2 flex justify-evenly space-x-4">
 						<li>
 							{data.collections.data.map((collection) => {
 								return (
@@ -62,6 +63,9 @@ export default async function RootLayout({
 						</li>
 						<li>
 							<SearchInput />
+						</li>
+						<li>
+							<NavigationCart />
 						</li>
 					</ul>
 				</nav>

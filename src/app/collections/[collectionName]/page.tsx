@@ -12,10 +12,10 @@ export async function generateMetadata({
 }: {
 	params: { collectionName: string };
 }): Promise<Metadata> {
-	const data: CollectionsByNameQuery = await executeGraphql(
-		CollectionsByNameDocument,
-		{},
-	);
+	const data: CollectionsByNameQuery = await executeGraphql({
+		query: CollectionsByNameDocument,
+		variables: {},
+	});
 
 	const filteredCollection = data.collections.data.filter(
 		(collection: productsForCollection) =>
@@ -40,10 +40,10 @@ export type productsForCollection = {
 export default async function ProductsPage({
 	params: { collectionName = "Summer Vibes" },
 }) {
-	const data: CollectionsByNameQuery = await executeGraphql(
-		CollectionsByNameDocument,
-		{},
-	);
+	const data: CollectionsByNameQuery = await executeGraphql({
+		query: CollectionsByNameDocument,
+		variables: {},
+	});
 
 	const productsObj: productsForCollection | never[] =
 		data.collections.data.filter(

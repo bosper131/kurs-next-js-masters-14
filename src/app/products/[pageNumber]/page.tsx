@@ -11,11 +11,13 @@ const PRODUCTS_PER_PAGE = 3;
 export default async function ProductsPage({
 	params: { pageNumber = 1 },
 }) {
-
-	const data: ProductsGetListQuery = await executeGraphql(
-		ProductsGetListDocument,
-		{ take: PRODUCTS_PER_PAGE, skip: pageNumber * PRODUCTS_PER_PAGE },
-	);
+	const data: ProductsGetListQuery = await executeGraphql({
+		query: ProductsGetListDocument,
+		variables: {
+			take: PRODUCTS_PER_PAGE,
+			skip: pageNumber * PRODUCTS_PER_PAGE,
+		},
+	});
 
 	return (
 		<>
