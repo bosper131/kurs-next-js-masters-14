@@ -44,11 +44,7 @@ export async function Reviews({
 		<div className="align-center grid grid-flow-row-dense grid-cols-3 gap-4">
 			<div className="col-span-3 lg:sticky lg:top-[90px] lg:col-span-1 lg:self-start">
 				<div className="mb-4">
-					<h1>Share your thoughts</h1>
-					<p className="py-2">
-						If you’ve used this product, share your thoughts with
-						other customers
-					</p>
+					<h2>Reviews</h2>
 				</div>
 				<form
 					action={handleFormAction}
