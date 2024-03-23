@@ -11,6 +11,9 @@ import {
 
 const PRODUCTS_PER_PAGE = 3;
 
+const countPages = (length: number) =>
+	Math.ceil(length / PRODUCTS_PER_PAGE);
+
 export default async function ProductsPage({
 	params: { pageNumber = 1 },
 	searchParams,
@@ -22,12 +25,9 @@ export default async function ProductsPage({
 }) {
 	const data: ProductsGetListQuery = await executeGraphql({
 		query: ProductsGetListDocument,
-		variables: {
-			take: PRODUCTS_PER_PAGE,
-			skip: pageNumber * PRODUCTS_PER_PAGE,
-		},
+		variables: {},
 	});
-
+	const pagesCount = countPages(data.products.data.length);
 	const sort = searchParams?.sort || "";
 	const sortKey = sort.split("_")[0];
 	const sortOrder = sort.split("_")[1];
@@ -54,10 +54,7 @@ export default async function ProductsPage({
 			<ProductsSort />
 			<ProductList products={productsOnPage} />
 			<div className="mt-5 flex w-full justify-center">
-				<Pagination
-					totalPages={data.products.data.length}
-					url={"products/"}
-				/>
+				<Pagination totalPages={pagesCount} url={"products/"} />
 			</div>
 		</>
 	);
