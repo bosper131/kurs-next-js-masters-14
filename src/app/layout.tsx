@@ -65,7 +65,9 @@ export default async function RootLayout({
 							<SearchInput />
 						</li>
 						<li>
-							<NavigationCart />
+							<div className="flex items-center gap-3">
+								<NavigationCart />
+							</div>
 						</li>
 					</ul>
 				</nav>
