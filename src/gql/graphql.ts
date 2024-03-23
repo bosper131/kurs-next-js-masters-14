@@ -341,7 +341,7 @@ export type ProductsGetListQueryVariables = Exact<{
 }>;
 
 
-export type ProductsGetListQuery = { products: { data: Array<{ id: string, name: string, description: string, price: number, categories: Array<{ name: string }>, images: Array<{ url: string }> }> } };
+export type ProductsGetListQuery = { products: { data: Array<{ id: string, name: string, description: string, price: number, rating?: number | null, categories: Array<{ name: string }>, images: Array<{ url: string }> }> } };
 
 export type ReviewFragment = { author: string, description: string, email: string, id: string, rating: number, title: string, createdAt: unknown, updatedAt: unknown };
 
@@ -598,6 +598,7 @@ export const ProductsGetListDocument = new TypedDocumentString(`
         url
       }
       price
+      rating
     }
   }
 }

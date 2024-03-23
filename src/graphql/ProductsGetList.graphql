@@ -1,4 +1,4 @@
-query ProductsGetList($skip: Int, $take:Int) {
+query ProductsGetList($skip: Int, $take: Int) {
 	products(take: $take, skip: $skip) {
 		data {
 			id
@@ -11,6 +11,7 @@ query ProductsGetList($skip: Int, $take:Int) {
 				url
 			}
 			price
+			rating
 		}
 	}
 }
