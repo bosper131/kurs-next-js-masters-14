@@ -5,4 +5,5 @@ export type ProductsType = NonNullable<
 >;
 export type ProductListWithSuggested = ProductsType & {
 	isSuggested?: boolean;
+	rating?: number;
 };

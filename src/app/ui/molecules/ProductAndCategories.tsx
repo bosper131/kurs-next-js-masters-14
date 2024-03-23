@@ -9,6 +9,7 @@ export const ProductAndCategories = ({
 	price,
 	categories,
 	isSuggested,
+	rating,
 }: ProductListWithSuggested) => {
 	const title = isSuggested ? <h2>{name}</h2> : <h1>{name}</h1>;
 	return (
@@ -20,6 +21,13 @@ export const ProductAndCategories = ({
 			{categories[0] && <p>{categories[0].name}</p>}
 			<p data-testid="product-price">{formatMoney(price)}</p>
 			<p>{description}</p>
+			<div className="flex w-full flex-wrap items-center justify-between">
+				{rating && (
+					<span className="text-xs" data-testid="product-rating">
+						{rating.toFixed(2)}
+					</span>
+				)}
+			</div>
 		</article>
 	);
 };
