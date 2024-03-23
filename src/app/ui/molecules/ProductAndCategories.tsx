@@ -18,7 +18,7 @@ export const ProductAndCategories = ({
 			)}
 			{title}
 			{categories[0] && <p>{categories[0].name}</p>}
-			<p>{formatMoney(price)}</p>
+			<p data-testid="product-price">{formatMoney(price)}</p>
 			<p>{description}</p>
 		</article>
 	);
