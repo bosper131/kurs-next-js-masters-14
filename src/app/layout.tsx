@@ -64,11 +64,6 @@ export default async function RootLayout({
 						<li>
 							<SearchInput />
 						</li>
-						<li>
-							<div className="flex items-center gap-3">
-								<NavigationCart />
-							</div>
-						</li>
 					</ul>
 				</nav>
 				<section className="p12 md:max-w-4x mx-auto max-w-md sm:max-w-2xl sm:py-16 lg:max-w-7xl">
