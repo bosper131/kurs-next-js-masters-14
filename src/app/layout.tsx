@@ -57,6 +57,11 @@ export default async function RootLayout({
 							</ActiveLink>
 						</li>
 						<li>
+							<div className="flex items-center gap-3">
+								<NavigationCart />
+							</div>
+						</li>
+						<li>
 							<ActiveLink href={"/categories/" as Route} exact>
 								Categories
 							</ActiveLink>
