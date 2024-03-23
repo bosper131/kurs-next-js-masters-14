@@ -10,6 +10,7 @@ import {
 import SuggestedProducts from "@/app/ui/organisms/SuggestedProducts";
 import { AddToCartButton } from "@/app/ui/atoms/ActiveCartButton";
 import { addItemToCartAction } from "@/actions/cart";
+import { ReviewsList } from "@/app/ui/organisms/ReviewsList";
 
 const numberOfSuggestedProducts = 4;
 
@@ -55,6 +56,7 @@ export default async function ProductPage({
 			<form action={addItemToCartAction}>
 				<AddToCartButton productId={params.productId} />
 			</form>
+			<ReviewsList productId={data.product?.id as string} />
 		</>
 	);
 }
